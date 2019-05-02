@@ -1,5 +1,19 @@
 let d = new DrawJS('c')
 
+function train(){
+    const r = document.getElementById('train-res')
+        n = document.getElementById('name')
+    r.innerHTML = 'video feed will freeze while training' +
+                    '<br>please move your head thanks :3'
+    fetch('http://localhost:5000/train?name=' + (n.value?n.value:'razor'))
+    .then((resp) => resp.json())
+    .then((res) => {
+        r.innerHTML = 'new face trained :3c'
+    })
+
+    setTimeout(()=>r.innerHTML='', 3000)
+}
+
 function cat(x,y,w,h){
 
     d.circle(x, y, w, 'yellow', true)
@@ -36,6 +50,7 @@ setInterval(() => {
 	       let centerx = data2.x + (data2.w/2)
 	       let centery = data2.y + (data2.w/2)
 	       cat(centerx, centery, data2.w/2, data2.h/2) 
+	       d.write(data2.name, data2.x, data2.y, 'white', true, '20px Arial')
 	    })
 	})
-}, 100)
+}, 300)

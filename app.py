@@ -1,10 +1,10 @@
-from flask import Flask, render_template, Response
-from camera import VideoCamera, Pos
-import flask_cors
+from flask import Flask, render_template, Response, request
+from camera import VideoCamera
+import flask_cors, logging
 import pdb, json, sys, traceback
 app = Flask(__name__)
 flask_cors.CORS(app)
-cam = VideoCamera()
+cam = None
 
 def make_resp(camera):
     while True:
@@ -16,9 +16,15 @@ def make_resp(camera):
 def index():
     return 'hello'
 
+@app.route('/train')
+def train_wreck():
+    name = request.args.get('name')
+    print('training ' + name)
+    cam.train(name)
+    return '1'
+
 @app.route('/feed')
 def video_feed():
-    #cam = VideoCamera()
     return Response(make_resp(cam),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
@@ -31,4 +37,16 @@ def faces():
         return ''
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port="5000", debug=True, threaded=True)
+    cam = VideoCamera()
+    app.run(
+        host='127.0.0.1', 
+        port="5000", 
+        debug=True, 
+        threaded=True
+    )
+    logger.basicConfig(level=logging.FATAL)
+    
+
+
+
+    

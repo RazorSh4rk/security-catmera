@@ -6,8 +6,17 @@
 </head>
 <body>
 
-<img src="http://localhost:5000/feed"></img>
-<canvas id="c" width="640px" height="480px"></canvas>
+<p id="container">
+  <img src="http://localhost:5000/feed"></img>
+  <canvas id="c" width="640px" height="480px"></canvas>
+</p>
+
+<p>
+  <input type="text" placeholder="name" id="name">
+  <br/>
+  <button onclick="train()">Train mew face</button>
+  <section id="train-res"></section>
+</p>
 
 <script src="script.js"></script>
 </body>

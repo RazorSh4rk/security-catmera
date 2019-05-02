@@ -2,10 +2,14 @@
 	border: 1px solid black;
 }
 
+#container{
+    position: relative;
+    width: 640px;
+    margin: auto;
+}
+
 #c, img{
 	position: absolute;
 	top: 0px;
-	left: 0px;
-    width: 1000px;
-    height: 650px;
+	left:0px;
 }
