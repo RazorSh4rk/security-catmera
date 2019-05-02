@@ -1,0 +1,11 @@
+#c {
+	border: 1px solid black;
+}
+
+#c, img{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+    width: 1000px;
+    height: 650px;
+}
