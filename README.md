@@ -4,9 +4,9 @@
 
 If it gets stuck at `Restarting with stat` (doesn't generate a debugger pin):
 
- * comment out line 7 in app
+ * comment out line 40 in app
  * `python app.py`
- * uncomment line 7 and save
+ * uncomment line 40 and save
  * server will restart
 
 (For some reason opening the camera stream makes it hang?)
