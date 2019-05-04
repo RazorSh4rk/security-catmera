@@ -64,6 +64,11 @@ class VideoCamera(object):
         except:
             pass
 
+        for i in range(0, 20):
+            s, image = self.video.read()
+            rgb = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)        
+            cv2.imwrite(path + '/' + str(i) + '.jpg', image)
+
         faces, labels = self.prepare_data()
         self.faces_save, self.labels_save = faces, labels
         print("Data prepared")
@@ -72,12 +77,8 @@ class VideoCamera(object):
 
         self.face_recognizer.train(faces, np.array(labels))
         self.trained = True
-        for i in range(0, 10):
-            s, image = self.video.read()
-            rgb = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)        
-            cv2.imwrite(path + '/' + str(i) + '.jpg', image)
-
-            print('i see ' + self.guess_face(rgb, self.face_recognizer))
+        
+        print('i see ' + self.guess_face(rgb, self.face_recognizer))
 
     # for training
     def detect_face(self, img):

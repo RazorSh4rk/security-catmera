@@ -44,7 +44,6 @@ if __name__ == '__main__':
         debug=True, 
         threaded=True
     )
-    logger.basicConfig(level=logging.FATAL)
     
 
 
